@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creating and Removing Elements</title>
+  <style>
+    #content {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      min-height: 50px;
+    }
+    button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Paragraph Manager</h1>
+  <button id="addParagraph">Add Paragraph</button>
+  <button id="removeParagraph">Remove Last Paragraph</button>
+  
+  <div id="content"></div>
+
+  <script>
+    // Get references to buttons and content div
+    const addButton = document.getElementById('addParagraph');
+    const removeButton = document.getElementById('removeParagraph');
+    const contentDiv = document.getElementById('content');
+
+    // Add Paragraph button functionality
+    addButton.addEventListener('click', () => {
+      // Create a new paragraph
+      const newParagraph = document.createElement('p');
+      newParagraph.textContent = 'This is a new paragraph.';
+      
+      // Append the paragraph to the content div
+      contentDiv.appendChild(newParagraph);
+    });
+
+    // Remove Last Paragraph button functionality
+    removeButton.addEventListener('click', () => {
+      // Check if there are any paragraphs in the content div
+      const lastParagraph = contentDiv.lastElementChild;
+      if (lastParagraph) {
+        // Remove the last paragraph
+        contentDiv.removeChild(lastParagraph);
+      } else {
+        alert('No more paragraphs to remove!');
+      }
+    });
+  </script>
+</body>
+</html>
